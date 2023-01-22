@@ -1,9 +1,20 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  TMD_API_KEY = Rails.application.credentials.dig(:tmdb, :api_key)
 
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
+
+  end
+
+  def search
+    query = params[:search].gsub(' ', '+')
+    @response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{TMD_API_KEY}&language=en-US&query=#{query}&page=1&include_adult=false")
+    json_parse = JSON.parse(@response)
+    @results = json_parse["results"]
+    
+    @small_poster = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/"
   end
 
   # GET /movies/1 or /movies/1.json
