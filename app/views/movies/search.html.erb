@@ -8,7 +8,11 @@
   <%= form.submit "Search" %>
 <% end %>
 <% @results.each do |movie| %>
-  <%= image_tag "#{@small_poster}#{movie["poster_path"]}" unless movie["poster_path"].nil? %>
+  <% if movie["poster_path"].nil? %>
+    <%= image_tag "no_poster.webp" %>
+  <% else %>
+    <%= image_tag "#{@small_poster}#{movie["poster_path"]}" %>
+  <% end %>
   <%= movie["original_title"] %><br />
 <% end %>
 
