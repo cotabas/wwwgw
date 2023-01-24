@@ -7,13 +7,18 @@
 
   <%= form.submit "Search" %>
 <% end %>
-<% @results.each do |movie| %>
-  <% if movie["poster_path"].nil? %>
-    <%= image_tag "no_poster.webp" %>
-  <% else %>
-    <%= image_tag "#{@small_poster}#{movie["poster_path"]}" %>
+<div id="tiles">
+  <% @results.each do |movie| %>
+    <div class="poster">
+      <% if movie["poster_path"].nil? %>
+        <%= image_tag "no_poster.webp" %>
+        <p class="no_poster_title">
+          <%= movie["original_title"] %>
+        </p>
+      <% else %>
+        <%= image_tag "#{@small_poster}#{movie["poster_path"]}" %>
+      <% end %>
+    </div>
   <% end %>
-  <%= movie["original_title"] %><br />
-<% end %>
-
+</div>
 

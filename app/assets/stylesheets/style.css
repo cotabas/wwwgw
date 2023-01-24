@@ -1,0 +1,14 @@
+
+#tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(160px));
+  gap: 5px;
+  padding: 20px;
+}
+
+.poster {
+  border-radius: 3px;
+}
+.poster:hover {
+  opacity: 70%;
+}

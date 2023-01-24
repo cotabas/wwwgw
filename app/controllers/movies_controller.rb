@@ -10,11 +10,12 @@ class MoviesController < ApplicationController
 
   def search
     query = params[:search].gsub(' ', '+')
-    @response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{TMD_API_KEY}&language=en-US&query=#{query}&page=1&include_adult=false")
-    json_parse = JSON.parse(@response)
-    @results = json_parse["results"]
-    
-    @small_poster = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/"
+    response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{TMD_API_KEY}&language=en-US&query=#{query}&page=1&include_adult=false")
+    json_parse = JSON.parse(response)
+    @results = json_parse["results"] 
+    @small_poster = "https://www.themoviedb.org/t/p/w150_and_h225_bestv2/"
+
+
   end
 
   # GET /movies/1 or /movies/1.json
@@ -32,7 +33,11 @@ class MoviesController < ApplicationController
 
   # POST /movies or /movies.json
   def create
-    @movie = Movie.new(movie_params)
+    #@movie = Movie.new(movie_params)
+    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}?api_key=#{TMD_API_KEY}&language=en-US")
+    json_parse = JSON.parse(response)
+
+    @movie = Movie.new(tmdb_id: movie_params[:tmdb_id], name: json_parse["original_title"], info: response)
 
     respond_to do |format|
       if @movie.save

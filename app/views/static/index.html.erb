@@ -4,6 +4,8 @@
 <%= link_to "sign out", destroy_user_session_url %>
 <br /><br />
 <%= link_to "movies", movies_url %>
+
+<%= link_to "search", "/search" %> 
 <br /><br />
 <% @users.each do |user| %>
   <%= user.inspect %><br />
