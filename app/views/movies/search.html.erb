@@ -1,26 +1,29 @@
-<h1>Search!</h1>
+<div class="container">
+  <h1>Search!</h1>
 
 
-<%= form_with url: "/search", method: :get do |form| %>
+  <%= form_with url: "/search", method: :get do |form| %>
 
-  <%= form.text_field :search %>
+    <%= form.text_field :search %>
 
-  <%= form.submit "Search" %>
-<% end %>
-<div id="tiles">
-  <% unless @results.nil? %>
-    <% @results.each do |movie| %>
-      <div class="poster">
-        <% if movie["poster_path"].nil? %>
-          <%= image_tag "no_poster.webp" %>
-          <p class="no_poster_title">
-          <%= movie["original_title"] %>
-          </p>
-        <% else %>
-          <%= image_tag "#{@small_poster}#{movie["poster_path"]}" %>
-        <% end %>
-      </div>
+    <%= form.submit "Search" %>
+  <% end %>
+  <div id="tiles">
+    <% unless @results.nil? %>
+      <% @results.each do |movie| %>
+        <div class="poster">
+          <a href="<%= "/view_movie?tmdb_id=#{movie["id"]}" %>">
+            <% if movie["poster_path"].nil? %>
+              <%= image_tag "no_poster.webp" %>
+              <p class="no_poster_title">
+              <%= movie["original_title"] %>
+              </p>
+            <% else %>
+              <%= image_tag "#{@small_poster}#{movie["poster_path"]}" %>
+            <% end %>
+          </a>
+        </div>
+      <% end %>
     <% end %>
-<% end %>
+  </div>
 </div>
-

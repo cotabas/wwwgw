@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/user/:id', to: 'user#show'
   get '/search/', to: 'movies#search'
+  get '/view_movie/', to: 'movies#view_movie'
 
   Rails.application.routes.draw do
     devise_for :users, controllers: {

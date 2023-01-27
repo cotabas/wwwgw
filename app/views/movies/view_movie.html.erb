@@ -1,0 +1,22 @@
+<div class="container">
+  <% if @movie["poster_path"].nil? %>
+    <%= image_tag "no_poster.webp" %>
+    <p class="no_poster_title">
+    <%= @movie["original_title"] %>
+    </p>
+  <% else %>
+    <%= image_tag "#{@large_poster}#{@movie["poster_path"]}" %>
+  <% end %>
+  <h1><%= @movie["original_title"] %></h1>
+  <%= @movie["release_date"] %><br />
+  <%= @movie["runtime"] %> mins<br />
+  <a href="https://www.imdb.com/title/<%= @movie["imdb_id"] %>" target="_new">imdb link</a>
+  <br />
+  <%= @movie["overview"] %><br /><br />
+
+
+  <h3> Currently available on: </h3>
+  <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
+    <%= stream["provider_name"] %><br />
+  <% end %>
+</div>
