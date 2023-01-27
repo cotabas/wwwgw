@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "< Back to search", :back %> <br /><br />
   <% if @movie["poster_path"].nil? %>
     <%= image_tag "no_poster.webp" %>
     <p class="no_poster_title">
@@ -16,7 +17,11 @@
 
 
   <h3> Currently available on: </h3>
-  <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
-    <%= stream["provider_name"] %><br />
+  <% if @streamers["results"]["US"]["flatrate"].nil? %>
+    None of your streaming platforms have this movie currently
+  <% else %>
+    <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
+      <%= stream["provider_name"] %><br />
+    <% end %>
   <% end %>
 </div>
