@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    query = params[:search].gsub(' ', '+')
+    query = params[:search].gsub(' ', '+') unless params[:search].nil?
     response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{TMD_API_KEY}&language=en-US&query=#{query}&page=1&include_adult=false")
     json_parse = JSON.parse(response)
     @results = json_parse["results"] 
