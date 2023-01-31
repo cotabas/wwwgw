@@ -24,4 +24,10 @@
       <%= stream["provider_name"] %><br />
     <% end %>
   <% end %>
+  <%= form_with url: "/movies/new", method: :get do |f| %>
+    <%= f.hidden_field :tmdb_id, value: @movie["imdb_id"] %>
+    <%= f.hidden_field :name, value: @movie["original_title"] %>
+    <%= f.hidden_field :info, value: @movie %>
+    <%= f.submit "Save movie" %>
+  <% end %>
 </div>
