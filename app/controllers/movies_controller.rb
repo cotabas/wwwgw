@@ -24,8 +24,8 @@ class MoviesController < ApplicationController
   end
 
   def view_movie
-    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}?api_key=#{TMD_API_KEY}&language=en-US")
-    @movie = JSON.parse(response)
+    @json_movie = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}?api_key=#{TMD_API_KEY}&language=en-US")
+    @movie = JSON.parse(@json_movie)
     response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}/watch/providers?api_key=#{TMD_API_KEY}")
     @streamers = JSON.parse(response)
   end
@@ -89,6 +89,6 @@ class MoviesController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.permit(:id, :tmdb_id, :name, :info)
+      params.permit(:id, :tmdb_id, :name, :runtime, :release, :imdb, :poster)
     end
 end

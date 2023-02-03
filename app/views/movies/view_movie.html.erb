@@ -27,7 +27,10 @@
   <%= form_with url: "/movies", method: :post do |f| %>
     <%= f.hidden_field :tmdb_id, value: @movie["id"] %>
     <%= f.hidden_field :name, value: @movie["original_title"] %>
-    <%= f.hidden_field :info, value: @movie %>
+    <%= f.hidden_field :imdb, value: @movie["imdb_id"] %>
+    <%= f.hidden_field :runtime, value: @movie["runtime"] %>
+    <%= f.hidden_field :release, value: @movie["release_date"] %>
+    <%= f.hidden_field :poster, value: @movie["poster_path"] %>
     <%= f.submit "Save movie" %>
   <% end %>
 </div>
