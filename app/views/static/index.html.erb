@@ -1,7 +1,10 @@
-<%= current_user.email unless current_user.nil? %>
-<br />
-<%= link_to "sign in", new_user_session_url %>
-<%= link_to "sign out", destroy_user_session_url %>
+<% if current_user.nil? %>
+  <%= link_to "sign in", new_user_session_url %>
+<% else %>
+  <%= current_user.email %>
+  <br />
+  <%= link_to "sign out", destroy_user_session_url %>
+<% end %>
 <br /><br />
 <%= link_to "movies", movies_url %>
 

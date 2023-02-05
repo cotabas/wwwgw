@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+   end
+   
+  def after_sign_up_path_for(resource)
+    '/' # Or :prefix_to_your_route
+  end
 
   # GET /resource/edit
   # def edit
