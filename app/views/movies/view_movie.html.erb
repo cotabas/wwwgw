@@ -15,7 +15,7 @@
   <br />
   <%= @movie["overview"] %><br /><br />
 
-
+  <%= @test %>
   <h3> Currently available on: </h3>
   <% if @streamers["results"]["US"]["flatrate"].nil? %>
     None of your streaming platforms have this movie currently
@@ -24,13 +24,19 @@
       <%= stream["provider_name"] %><br />
     <% end %>
   <% end %>
-  <%= form_with url: "/movies", method: :post do |f| %>
-    <%= f.hidden_field :tmdb_id, value: @movie["id"] %>
-    <%= f.hidden_field :name, value: @movie["original_title"] %>
-    <%= f.hidden_field :imdb, value: @movie["imdb_id"] %>
-    <%= f.hidden_field :runtime, value: @movie["runtime"] %>
-    <%= f.hidden_field :release, value: @movie["release_date"] %>
-    <%= f.hidden_field :poster, value: @movie["poster_path"] %>
-    <%= f.submit "Save movie" %>
+  <% movie_id = Movie.find_by(tmdb_id: @movie["id"]) %>
+  <% movie_id = movie_id.nil? ? 0 : movie_id.id %>
+  <% unless Save.where(user_id: current_user.id, movie_id: movie_id).present? %>
+    <%= form_with url: "/movies", method: :post do |f| %>
+      <%= f.hidden_field :tmdb_id, value: @movie["id"] %>
+      <%= f.hidden_field :name, value: @movie["original_title"] %>
+      <%= f.hidden_field :imdb, value: @movie["imdb_id"] %>
+      <%= f.hidden_field :runtime, value: @movie["runtime"] %>
+      <%= f.hidden_field :release, value: @movie["release_date"] %>
+      <%= f.hidden_field :poster, value: @movie["poster_path"] %>
+      <%= f.submit "Save movie" %>
+    <% end %>
+  <% else %>
+    This movie is in your list 
   <% end %>
 </div>

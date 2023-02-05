@@ -1,0 +1,5 @@
+<%= @user.inspect %>
+<br />
+<% @user.saves.each do |movie| %>
+  <%= Movie.find(movie.movie_id).name %>
+<% end %>

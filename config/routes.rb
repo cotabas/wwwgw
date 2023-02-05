@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "static#index"
 
-   get '/users/:id', to: 'users#show'
+   get '/user/:id', to: 'user#show'
   get '/search/', to: 'movies#search'
   get '/view_movie/', to: 'movies#view_movie'
 

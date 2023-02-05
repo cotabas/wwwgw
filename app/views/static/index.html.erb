@@ -1,7 +1,7 @@
 <% if current_user.nil? %>
   <%= link_to "sign in", new_user_session_url %>
 <% else %>
-  <%= current_user.email %>
+  <%= link_to current_user.email, "/user/#{current_user.id}" %>
   <br />
   <%= link_to "sign out", destroy_user_session_url %>
 <% end %>
