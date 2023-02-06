@@ -1,0 +1,15 @@
+
+<div id="<%= dom_id movie %>">
+  <div class="poster">
+    <a href="<%= "/view_movie?tmdb_id=#{movie.tmdb_id}" %>">
+      <% if movie.poster.nil? %>
+        <%= image_tag "no_poster.webp" %>
+        <p class="no_poster_title">
+        <%= movie.name %>
+        </p>
+      <% else %>
+        <%= image_tag "#{@small_poster}#{movie.poster}" %>
+      <% end %>
+    </a>
+  </div>
+</div>

@@ -2,4 +2,5 @@
 <br />
 <% @user.saves.each do |movie| %>
   <%= Movie.find(movie.movie_id).name %>
+  <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
 <% end %>
