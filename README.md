@@ -1,24 +1,9 @@
-# README
+# What Were We Going to Watch? 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A place to save the things you talked about watching, and remind you when they become available on a streaming service that you have
 
-Things you may want to cover:
+### The movie database
 
-* Ruby version
+wwwgw uses the movie database (tmdb) api to pull meta information on movies and shows
+wwwgw also checks tmdb every morning to see if any of the users saved movies or shows have been added to a streaming platform they have selected and sends them an email if something becomes available 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
