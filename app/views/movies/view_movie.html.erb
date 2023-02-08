@@ -21,6 +21,7 @@
     None of your streaming platforms have this movie currently
   <% else %>
     <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
+      <%= stream.inspect %>
       <%= stream["provider_name"] %><br />
     <% end %>
   <% end %>

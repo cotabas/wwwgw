@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :streamers
   resources :movies
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "static#index"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get '/view_movie/', to: 'movies#view_movie'
 
   Rails.application.routes.draw do
+  resources :streamers
     devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: "users/sessions"

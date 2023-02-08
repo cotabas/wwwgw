@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @streamer %>
+
+<div>
+  <%= link_to "Edit this streamer", edit_streamer_path(@streamer) %> |
+  <%= link_to "Back to streamers", streamers_path %>
+
+  <%= button_to "Destroy this streamer", @streamer, method: :delete %>
+</div>

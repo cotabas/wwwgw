@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  disney: false
+  netflix: false
+  hbo: false
+  prime: false
+  apple: false
+  paramount: false
+
+two:
+  user: two
+  disney: false
+  netflix: false
+  hbo: false
+  prime: false
+  apple: false
+  paramount: false

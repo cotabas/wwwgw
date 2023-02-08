@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Streamers</h1>
+
+<div id="streamers">
+  <% @streamers.each do |streamer| %>
+    <%= render streamer %>
+    <p>
+      <%= link_to "Show this streamer", streamer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New streamer", new_streamer_path %>

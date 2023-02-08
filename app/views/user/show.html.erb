@@ -1,6 +1,12 @@
 <%= @user.inspect %>
 <br />
-<% @user.saves.each do |movie| %>
-  <%= Movie.find(movie.movie_id).name %>
-  <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
+<% $streamers.each do |st| %>
+  <%= @user.streamer.inspect %>
+  <%= st %>
+  <%= @user.streamer.send st[0] %>
 <% end %>
+<div id="tiles">
+  <% @user.saves.each do |movie| %>
+    <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
+  <% end %>
+</div>

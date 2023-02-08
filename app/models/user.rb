@@ -21,4 +21,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :saves, class_name: 'Save'
   has_many :movies, through: :saves
+  has_one :streamer
 end
