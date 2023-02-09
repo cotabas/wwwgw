@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to "< Back to search", :back %> <br /><br />
+  <%= link_to "< Back", :back %> <br /><br />
   <% if @movie["poster_path"].nil? %>
     <%= image_tag "no_poster.webp" %>
     <p class="no_poster_title">
@@ -38,6 +38,6 @@
       <%= f.submit "Save movie" %>
     <% end %>
   <% else %>
-    This movie is in your list 
+    <%= button_to "Remove Movie", Save.where(user_id: current_user.id, movie_id: movie_id), method: :delete %>
   <% end %>
 </div>

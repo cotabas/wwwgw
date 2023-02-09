@@ -2,6 +2,7 @@
 #tiles {
   display: grid;
   grid-template-columns: repeat(auto-fill, min(160px));
+  justify-content: center;
   gap: 5px;
   padding: 20px;
 }
