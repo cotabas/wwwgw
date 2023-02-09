@@ -14,6 +14,20 @@
 
   <body>
     <div class="container">
+      <nav>
+        <ul>
+          <li><strong>wwwgw?</strong></li>
+        </ul>
+        <ul>
+          <li><%= link_to "search", "/search" %></li>
+          <% if current_user.nil? %>
+            <li><%= link_to "sign in", new_user_session_url, role: "button" %></li>
+          <% else %>
+            <li><%= link_to current_user.email, "/user/#{current_user.id}" %></li>
+            <li><%= link_to "sign out", destroy_user_session_url, role: "button" %></li>
+          <% end %>
+        </ul>
+      </nav>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
