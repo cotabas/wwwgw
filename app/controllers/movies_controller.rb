@@ -44,16 +44,14 @@ class MoviesController < ApplicationController
     if Movie.where(tmdb_id: params[:tmdb_id]).present?
       @movie = Movie.find_by(tmdb_id: params[:tmdb_id])
       Save.create(user: current_user, movie: @movie) unless Save.where(user_id: current_user.id, movie_id: @movie.id).present?
-      action = "saved"
     else
       @movie = Movie.new(movie_params)
       Save.create(user: current_user, movie: @movie)
-      action = "created"
     end
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully #{action}" }
+        format.html { redirect_to "/user/#{current_user.id}", notice: "Movie was successfully saved." }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }

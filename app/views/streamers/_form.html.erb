@@ -10,7 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label :disney %>
+    <%= form.check_box :disney, role: "switch" %>
+  </div>
+  <div>
+    <%= form.label :netflix %>
+    <%= form.check_box :netflix, role: "switch" %>
+  </div>
   <div>
     <%= form.submit %>
   </div>

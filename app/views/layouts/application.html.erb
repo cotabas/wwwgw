@@ -24,7 +24,7 @@
             <li><%= link_to "sign in", new_user_session_url, role: "button" %></li>
           <% else %>
             <li><%= link_to current_user.email, "/user/#{current_user.id}" %></li>
-            <li><%= link_to "sign out", destroy_user_session_url, role: "button" %></li>
+            <li><%= link_to "sign out", destroy_user_session_url, role: "button", class: "outline" %></li>
           <% end %>
         </ul>
       </nav>

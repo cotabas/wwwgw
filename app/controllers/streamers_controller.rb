@@ -36,6 +36,8 @@ class StreamersController < ApplicationController
 
   # PATCH/PUT /streamers/1 or /streamers/1.json
   def update
+   p params[:streamer]
+
     respond_to do |format|
       if @streamer.update(streamer_params)
         format.html { redirect_to streamer_url(@streamer), notice: "Streamer was successfully updated." }
@@ -65,6 +67,6 @@ class StreamersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def streamer_params
-      params.fetch(:streamer, {})
+      params.fetch(:streamers, {})
     end
 end
