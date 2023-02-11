@@ -16,14 +16,14 @@
     <div class="container">
       <nav>
         <ul>
-          <li><strong>wwwGw?</strong></li>
+          <li><h2 style="margin: 0"><strong><a href="/">wwwGw?</a></strong></h2></li>
         </ul>
         <ul>
-          <li><%= link_to "search", "/search" %></li>
+          <li><%= link_to image_tag("search.svg"), "/search" %></li>
           <% if current_user.nil? %>
             <li><%= link_to "sign in", new_user_session_url, role: "button" %></li>
           <% else %>
-            <li><%= link_to current_user.email, "/user/#{current_user.id}" %></li>
+            <li><%= link_to current_user.name, "/user/#{current_user.id}" %></li>
             <li><%= link_to "sign out", destroy_user_session_url, role: "button", class: "outline" %></li>
           <% end %>
         </ul>

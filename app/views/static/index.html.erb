@@ -1,16 +1,9 @@
-<% if current_user.nil? %>
-  <%= link_to "sign in", new_user_session_url %>
-<% else %>
-  <%= link_to current_user.email, "/user/#{current_user.id}" %>
-  <br />
-  <%= link_to "sign out", destroy_user_session_url %>
-<% end %>
-<br /><br />
-<%= link_to "movies", movies_url %>
-
-<%= link_to "search", "/search" %> 
-<br /><br />
-<% @users.each do |user| %>
-  <%= user.inspect %><br />
-<% end %>
-
+<h2> Recent movies:</h2>
+<div id="tiles">
+  <% count = 0 %> 
+  <% Movie.all.each do |movie| %>
+    <% count += 1 %>
+    <%= render "movies/tiled_posters", movie: movie %>
+    <% break if count == 12 %>
+  <% end %>
+</div>
