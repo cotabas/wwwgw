@@ -13,3 +13,14 @@
 .poster:hover {
   opacity: 70%;
 }
+a:hover {
+  opacity: 70%;
+}
+.nav_username {
+  margin-right: 5px;
+}
+@media screen and (max-width: 450px) {
+  .nav_username {
+    display: none;
+  }
+}

@@ -23,7 +23,7 @@
           <% if current_user.nil? %>
             <li><%= link_to "sign in", new_user_session_url, role: "button" %></li>
           <% else %>
-            <li><%= link_to current_user.name, "/user/#{current_user.id}" %></li>
+            <li><%= link_to current_user.name, "/user/#{current_user.id}", class: "nav_username" %><%= link_to image_tag("profile.png", width: 48), "/user/#{current_user.id}" %></li>
             <li><%= link_to "sign out", destroy_user_session_url, role: "button", class: "outline" %></li>
           <% end %>
         </ul>
