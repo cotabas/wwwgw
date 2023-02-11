@@ -21,10 +21,11 @@
     None of your streaming platforms have this movie currently
   <% else %>
     <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
-      <%= stream.inspect %>
-      <%= stream["provider_name"] %><br />
+      <%= image_tag "#{$logo}#{stream["logo_path"]}" %>
     <% end %>
   <% end %>
+  <br />
+  <br />
   <% movie_id = Movie.find_by(tmdb_id: @movie["id"]) %>
   <% movie_id = movie_id.nil? ? 0 : movie_id.id %>
   <% unless Save.where(user_id: current_user.id, movie_id: movie_id).present? %>
