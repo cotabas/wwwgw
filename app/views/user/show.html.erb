@@ -1,7 +1,9 @@
-<%= @user.inspect %>
+<%= @user.streamer.inspect %>
 <br />
 <% $streamers.each do |st| %>
   <%= st %>
+  <input class="st_switch" role="switch" type="checkbox" value="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
+  <label for="<%= st[0] %>"><%= st[0].capitalize %></label>
   <%= @user.streamer.send st[0] %>
 <% end %>
 <div id="tiles">
