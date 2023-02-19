@@ -1,10 +1,11 @@
 <% $streamers.each do |st| %>
-  <input class="st_switch" role="switch" type="checkbox" value="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
+  <input class="st_switch" role="switch" type="checkbox" value="<%= st[0] %>" id="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
   <label for="<%= st[0] %>"><%= st[0].capitalize %></label>
 <% end %>
+<input type="checkbox" role="switch" id="test">
 <div id="tiles">
   <% @user.saves.each do |movie| %>
     <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
   <% end %>
 </div>
-<%= javascript_include_tag 'stream_switch' %>
+<%= javascript_include_tag 'stream_switch', defer: true %>
