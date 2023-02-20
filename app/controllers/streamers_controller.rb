@@ -1,5 +1,11 @@
 class StreamersController < ApplicationController
   before_action :set_streamer, only: %i[ show edit update destroy ]
+  helper_method :oc
+
+  def oc 
+    Streamer.find(6).update(disney: true)
+    p "work!"
+  end  
 
   # GET /streamers or /streamers.json
   def index

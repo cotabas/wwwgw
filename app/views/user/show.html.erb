@@ -7,20 +7,21 @@
     <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
   <% end %>
 </div>
-<script>
-  
-const toggles = window.document.getElementsByClassName("st_switch");
+<%= check_box_tag("cool", "else", false, onchange: oc()) %>
 
-
-for (let i = 0; i < toggles.length; i++) {
-  toggles[i].addEventListener("click", () => {
-    console.log(toggles[i].value);
-    console.log(toggles[i].checked);
-    if (toggles[i].checked) {
-        <%= Streamer.find(6).disney = true %>
-        <%= test = "hey" %>
-        console.log("<%= test %>");
-      }
-  });
-}
-</script>
+<%= javascript_tag do %>
+	
+	const toggles = window.document.getElementsByClassName("st_switch");
+	
+	
+	for (let i = 0; i < toggles.length; i++) {
+	  toggles[i].addEventListener("click", () => {
+	    console.log(toggles[i].value);
+	    console.log(toggles[i].checked);
+	    if (toggles[i].checked) {
+	      console.log("hello");
+        <%=raw oc() %>
+	    }
+	  });
+	}
+<% end %>
