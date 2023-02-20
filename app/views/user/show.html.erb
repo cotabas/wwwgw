@@ -2,10 +2,25 @@
   <input class="st_switch" role="switch" type="checkbox" value="<%= st[0] %>" id="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
   <label for="<%= st[0] %>"><%= st[0].capitalize %></label>
 <% end %>
-<input type="checkbox" role="switch" id="test">
 <div id="tiles">
   <% @user.saves.each do |movie| %>
     <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
   <% end %>
 </div>
-<%= javascript_include_tag 'stream_switch', defer: true %>
+<script>
+  
+const toggles = window.document.getElementsByClassName("st_switch");
+
+
+for (let i = 0; i < toggles.length; i++) {
+  toggles[i].addEventListener("click", () => {
+    console.log(toggles[i].value);
+    console.log(toggles[i].checked);
+    if (toggles[i].checked) {
+        <%= Streamer.find(6).disney = true %>
+        <%= test = "hey" %>
+        console.log("<%= test %>");
+      }
+  });
+}
+</script>
