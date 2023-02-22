@@ -9,19 +9,3 @@
 </div>
 <%= check_box_tag("cool", "else", false, onchange: oc()) %>
 
-<%= javascript_tag do %>
-	
-	const toggles = window.document.getElementsByClassName("st_switch");
-	
-	
-	for (let i = 0; i < toggles.length; i++) {
-	  toggles[i].addEventListener("click", () => {
-	    console.log(toggles[i].value);
-	    console.log(toggles[i].checked);
-	    if (toggles[i].checked) {
-	      console.log("hello");
-        <%=raw oc() %>
-	    }
-	  });
-	}
-<% end %>
