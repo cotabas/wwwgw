@@ -1,26 +1,28 @@
 console.log("Stream switcher loaded");
 
 
-const toggles = window.document.getElementsByClassName("st_switch");
+var toggles = window.document.getElementsByClassName("st_switch");
 
 
 for (let i = 0; i < toggles.length; i++) {
   toggles[i].addEventListener("click", () => {
+    let posters = window.document.getElementsByClassName("pro-" + toggles[i].name);
     console.log(toggles[i].value);
     console.log(toggles[i].checked);
+    console.log(toggles[i].name);
     if (toggles[i].checked) {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", '/streamers/6', true);
-
-      //Send the proper header information along with the request
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-      xhr.onreadystatechange = () => { // Call a function when the state changes.
-          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            // Request finished. Do processing here.
-          }
+      console.log(posters);
+      for (let j = 0; j < posters.length; j++) {
+        console.log(j);
+        posters[j].style = "box-shadow: 5px 5px 5px";
+        console.log(posters[j].style);
       }
-      xhr.send("disney=true");
+    } else {
+      for (let j = 0; j < posters.length; j++) {
+        console.log(j);
+        posters[j].style = "";
+        console.log(posters[j].style);
+      }
     }
   });
   

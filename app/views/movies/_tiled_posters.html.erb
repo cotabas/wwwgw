@@ -3,12 +3,12 @@
   <div class="poster">
     <a href="<%= "/view_movie?tmdb_id=#{movie.tmdb_id}" %>">
       <% if movie.poster.nil? %>
-        <%= image_tag "no_poster.webp" %>
+        <%= image_tag "no_poster.webp", class: streamy(movie.tmdb_id).map { |key| "pro-#{key["provider_id"]}" }.join(' ') %>
         <p class="no_poster_title">
         <%= movie.name %>
         </p>
       <% else %>
-        <%= image_tag "#{$small_poster}#{movie.poster}" %>
+        <%= image_tag "#{$small_poster}#{movie.poster}", class: streamy(movie.tmdb_id).map { |key| "pro-#{key["provider_id"]}" }.join(' ') %>
       <% end %>
     </a>
   </div>

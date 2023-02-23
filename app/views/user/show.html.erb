@@ -1,11 +1,11 @@
 <% $streamers.each do |st| %>
-  <input class="st_switch" role="switch" type="checkbox" value="<%= st[0] %>" id="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
+  <input class="st_switch" role="switch" name="<%= st[1] %>" type="checkbox" value="<%= st[0] %>" id="<%= st[0] %>" <% if @user.streamer.send st[0] %>checked<% end %> 
   <label for="<%= st[0] %>"><%= st[0].capitalize %></label>
 <% end %>
 <div id="tiles">
   <% @user.saves.each do |movie| %>
+    <% streamy(Movie.find(movie.movie_id).tmdb_id).map { |key| key["provider_id"] } %>
     <%= render "movies/tiled_posters", movie: Movie.find(movie.movie_id) %>
   <% end %>
 </div>
-<%= check_box_tag("cool", "else", false, onchange: oc()) %>
-
+<%= javascript_include_tag 'stream_switch', defer: true %>

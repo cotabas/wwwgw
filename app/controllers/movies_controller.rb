@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
   before_action :set_posters
-  TMD_API_KEY = Rails.application.credentials.dig(:tmdb, :api_key)
 
   # GET /movies or /movies.json
   def index
@@ -11,7 +10,7 @@ class MoviesController < ApplicationController
 
   def search
     query = params[:search].gsub(' ', '+') unless params[:search].nil?
-    response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{TMD_API_KEY}&language=en-US&query=#{query}&page=1&include_adult=false")
+    response = HTTP.get("https://api.themoviedb.org/3/search/movie?api_key=#{$tmd_api_key}&language=en-US&query=#{query}&page=1&include_adult=false")
     json_parse = JSON.parse(response)
     @results = json_parse["results"] 
 
@@ -19,14 +18,14 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
-    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}/watch/providers?api_key=#{TMD_API_KEY}")
+    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}/watch/providers?api_key=#{$tmd_api_key}")
     @streamers = JSON.parse(response)
   end
 
   def view_movie
-    @json_movie = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}?api_key=#{TMD_API_KEY}&language=en-US")
+    @json_movie = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}?api_key=#{$tmd_api_key}&language=en-US")
     @movie = JSON.parse(@json_movie)
-    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}/watch/providers?api_key=#{TMD_API_KEY}")
+    response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie_params[:tmdb_id]}/watch/providers?api_key=#{$tmd_api_key}")
     @streamers = JSON.parse(response)
   end
 

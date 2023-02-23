@@ -4,7 +4,7 @@
 
   <%= form_with url: "/search", method: :get do |form| %>
 
-    <%= form.text_field :search %>
+    <%= form.text_field :search, autofocus: true %>
 
     <%= form.submit "Search" %>
   <% end %>
