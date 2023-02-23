@@ -21,6 +21,7 @@
     None of your streaming platforms have this movie currently
   <% else %>
     <% @streamers["results"]["US"]["flatrate"].each do |stream| %>
+      <% stream.inspect %>
       <%= image_tag "#{$logo}#{stream["logo_path"]}" %>
     <% end %>
   <% end %>

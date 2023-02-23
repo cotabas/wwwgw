@@ -19,6 +19,15 @@ a:hover {
 .nav_username {
   margin-right: 5px;
 }
+#toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+.menu_img {
+  box-shadow: none !important;
+}
 @media screen and (max-width: 450px) {
   .nav_username {
     display: none;
