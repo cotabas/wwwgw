@@ -1,9 +1,11 @@
-<h2> Recent movies:</h2>
-<div id="tiles">
-  <% count = 0 %> 
-  <% Movie.all.each do |movie| %>
-    <% count += 1 %>
-    <%= render "movies/tiled_posters", movie: movie %>
-    <% break if count == 12 %>
-  <% end %>
+<div class="container">
+  <h2> Recent movies:</h2>
+  <div id="tiles">
+    <% count = 0 %> 
+    <% Movie.all.each do |movie| %>
+      <% count += 1 %>
+      <%= render "movies/tiled_posters", movie: movie %>
+      <% break if count == 12 %>
+    <% end %>
+  </div>
 </div>

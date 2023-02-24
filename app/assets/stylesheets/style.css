@@ -6,7 +6,9 @@
   gap: 12px;
   padding: 20px;
 }
-
+.first_letter {
+  color: var(--primary);
+}
 .poster {
   border-radius: 3px;
 }
