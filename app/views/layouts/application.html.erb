@@ -21,7 +21,7 @@
         <ul>
           <li><%= link_to image_tag("search.svg", class: "menu_img"), "/search" %></li>
           <% if current_user.nil? %>
-            <li><%= link_to "sign in", new_user_session_url, role: "button" %></li>
+            <li><%= link_to "sign in", "/users/sign_in", role: "button" %></li>
           <% else %>
             <li><% link_to current_user.name, "/user/#{current_user.id}", class: "nav_username" %><%= link_to image_tag("profile.png", width: 48, class: "menu_img"), "/user/#{current_user.id}" %></li>
             <li><%= link_to "sign out", destroy_user_session_url, role: "button", class: "outline" %></li>
