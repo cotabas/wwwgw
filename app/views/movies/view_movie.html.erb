@@ -17,7 +17,7 @@
 
   <%= @test %>
   <h3> Currently available on: </h3>
-  <% if @streamers["results"]["US"]["flatrate"].nil? %>
+  <% if @streamers["results"]["US"].nil? || @streamers["results"]["US"]["flatrate"].nil? %>
     None of your streaming platforms have this movie currently
   <% else %>
     <% @streamers["results"]["US"]["flatrate"].each do |stream| %>

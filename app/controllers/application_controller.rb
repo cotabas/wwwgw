@@ -16,7 +16,9 @@ class ApplicationController < ActionController::Base
 
   def streamy(movie)
     response = HTTP.get("https://api.themoviedb.org/3/movie/#{movie}/watch/providers?api_key=#{$tmd_api_key}")
-    return JSON.parse(response)["results"]["US"]["flatrate"] || {} 
+    return JSON.parse(response)["results"]["US"]["flatrate"] || {} unless JSON.parse(response)["results"]["US"].nil?
+    return {}
+    #this^ isn't great.. but unreleased movies can not have flatrate in the JSON
   end
 
 end
