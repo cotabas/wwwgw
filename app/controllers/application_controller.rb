@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
     :paramount => 531,
     :netflix => 8,
     :hbo => 384,
-    :apple => 350
-
+    :apple => 350,
+    :hulu => 15 
   }
   helper_method :streamy
 
